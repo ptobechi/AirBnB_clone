@@ -6,6 +6,7 @@ import models
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """
     Base model class for the airbnb clone project
@@ -67,4 +68,4 @@ class BaseModel:
         Should print: [<class name>] (<self.id>) <self.__dict__>
         """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-                                    self.__dict__)
+                                     self.__dict__)

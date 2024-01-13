@@ -5,6 +5,7 @@ A user module that inherits the basemodel
 """
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """
     A user class model

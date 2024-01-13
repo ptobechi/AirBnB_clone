@@ -9,6 +9,7 @@ import shlex
 from models.engine import storage
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     """
     Command interpreter class
@@ -76,19 +77,20 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_all(self, arg):
-         """Prints all string representation of all instances"""
-         args = shlex.split(arg)
-         all_objs = []
-         if not args:
-             for obj in storage.all().values():
-                 all_objs.append(str(obj))
-         elif args[0] not in storage.classes:
+        """Prints all string representation of all instances"""
+        args = shlex.split(arg)
+        all_objs = []
+        if not args:
+            for obj in storage.all().values():
+                all_objs.append(str(obj))
+        elif args[0] not in storage.classes:
             print("** class doesn't exist **")
             return
-         else:
+        else:
             # Use the <class name>.all() syntax to retrieve all instances
-            all_objs = [str(obj) for obj in storage.classes[args[0]].all().values()]
-         print(all_objs)
+            all_objs = [str(obj) for obj in
+                        storage.classes[args[0]].all().values()]
+        print(all_objs)
 
     def do_update(self, arg):
         """
@@ -111,7 +113,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** attribute name missing **")
             elif len(args) < 4:
                 print("** value missing **")
-            elif args[2] == "id" or args[2] == "created_at" or args[2] == "updated_at":
+            elif args[2] == "id" or args[2] == "created_at" or \
+                    args[2] == "updated_at":
                 print("** cannot update id, created_at, or updated_at **")
             else:
                 obj = all_objs[key]
@@ -123,6 +126,6 @@ class HBNBCommand(cmd.Cmd):
                 except ValueError:
                     print("** invalid value for attribute **")
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-

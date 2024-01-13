@@ -23,12 +23,13 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
     classes = {"BaseModel": BaseModel, "User": User, "State": State,
-            "City": City, "Amenity": Amenity, "Place": Place,
-              "Review": Review}
+               "City": City, "Amenity": Amenity, "Place": Place,
+               "Review": Review}
+
     def all(self, cls=None):
         if cls is not None:
             objects_of_cls = {key: obj for key, obj in self.__objects.items()
-                                if type(obj).__name__ == cls}
+                              if type(obj).__name__ == cls}
             return objects_of_cls
         return self.__objects
 
@@ -58,7 +59,8 @@ class FileStorage:
 
             FileStorage.classes.update({
                 "BaseModel": BaseModel, "User": User, "State": State,
-                "City": City, "Amenity": Amenity, "Place": Place, "Review": Review
+                "City": City, "Amenity": Amenity, "Place": Place,
+                "Review": Review
             })
         if exists(self.__file_path):
             with open(self.__file_path, 'r', encoding='utf-8') as file:
@@ -69,4 +71,3 @@ class FileStorage:
                         obj_class = self.classes[class_name]
                         obj = obj_class(**value)
                         self.__objects[key] = obj
-
