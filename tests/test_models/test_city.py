@@ -1,3 +1,6 @@
+"""
+a test module
+"""
 import unittest
 from models.city import City
 from datetime import datetime
@@ -53,9 +56,12 @@ class TestCity(unittest.TestCase):
         """
         Test the __init__ method with arguments
         """
-        city_with_args = City(id="123", created_at="2023-01-01T12:00:00.000000", name="New York", state_id="NY")
+        city_with_args = City(id="123",
+                              created_at="2023-01-01T12:00:00.000000",
+                              name="New York", state_id="NY")
         self.assertEqual(city_with_args.id, "123")
-        self.assertEqual(city_with_args.created_at, datetime(2023, 1, 1, 12, 0, 0))
+        self.assertEqual(city_with_args.created_at,
+                         datetime(2023, 1, 1, 12, 0, 0))
         self.assertEqual(city_with_args.name, "New York")
         self.assertEqual(city_with_args.state_id, "NY")
 
@@ -77,6 +83,7 @@ class TestCity(unittest.TestCase):
         str_representation = str(self.city)
         self.assertIn(self.city.__class__.__name__, str_representation)
         self.assertIn(self.city.id, str_representation)
+
 
 if __name__ == '__main__':
     unittest.main()

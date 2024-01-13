@@ -1,3 +1,6 @@
+"""
+a test module for amenity class
+"""
 import unittest
 from models.amenity import Amenity
 from datetime import datetime
@@ -69,6 +72,7 @@ class TestAmenity(unittest.TestCase):
         str_representation = str(self.amenity)
         self.assertIn(self.amenity.__class__.__name__, str_representation)
         self.assertIn(self.amenity.id, str_representation)
+
 
 if __name__ == '__main__':
     unittest.main()

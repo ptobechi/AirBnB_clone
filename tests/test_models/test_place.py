@@ -1,6 +1,11 @@
+"""
+place unittest module
+"""
+
 import unittest
 from models.place import Place
 from datetime import datetime
+
 
 class TestPlace(unittest.TestCase):
     """
@@ -72,7 +77,15 @@ class TestPlace(unittest.TestCase):
         """
         Test the __init__ method with arguments
         """
-        place_with_args = Place(id="789", created_at="2023-01-01T12:00:00.000000", city_id="123", user_id="456", name="Cozy Place", description="A beautiful cozy place", number_rooms=2, number_bathrooms=1, max_guest=4, price_by_night=100, latitude=40.7128, longtitude=-74.0060, amenity_ids=["1", "2", "3"])
+        place_with_args = Place(id="789",
+                                created_at="2023-01-01T12:00:00.000000",
+                                city_id="123", user_id="456",
+                                name="Cozy Place",
+                                description="A beautiful cozy place",
+                                number_rooms=2, number_bathrooms=1,
+                                max_guest=4, price_by_night=100,
+                                latitude=40.7128, longtitude=-74.0060,
+                                amenity_ids=["1", "2", "3"])
         self.assertEqual(place_with_args.id, "789")
         # Add assertions for other attributes
 
@@ -95,6 +108,7 @@ class TestPlace(unittest.TestCase):
         str_representation = str(self.place)
         self.assertIn(self.place.__class__.__name__, str_representation)
         self.assertIn(self.place.id, str_representation)
+
 
 if __name__ == '__main__':
     unittest.main()

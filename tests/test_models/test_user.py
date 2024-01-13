@@ -1,3 +1,6 @@
+"""
+user module test suite
+"""
 import unittest
 from models.user import User
 from datetime import datetime
@@ -84,6 +87,7 @@ class TestUser(unittest.TestCase):
         str_representation = str(self.user)
         self.assertIn(self.user.__class__.__name__, str_representation)
         self.assertIn(self.user.id, str_representation)
+
 
 if __name__ == '__main__':
     unittest.main()

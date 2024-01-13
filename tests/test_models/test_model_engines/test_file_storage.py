@@ -1,3 +1,6 @@
+"""
+file storage module test suite
+"""
 import unittest
 import os
 from models.engine.file_storage import FileStorage
@@ -123,6 +126,7 @@ class TestFileStorage(unittest.TestCase):
 
         # Check that __objects is still an empty dictionary
         self.assertEqual(self.file_storage._FileStorage__objects, {})
+
 
 if __name__ == '__main__':
     unittest.main()

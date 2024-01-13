@@ -1,3 +1,6 @@
+"""
+state module inittest
+"""
 import unittest
 from models.state import State
 from datetime import datetime
@@ -44,7 +47,9 @@ class TestState(unittest.TestCase):
         """
         Test the __init__ method with arguments
         """
-        state_with_args = State(id="789", created_at="2023-01-01T12:00:00.000000", name="New York")
+        state_with_args = State(id="789",
+                                created_at="2023-01-01T12:00:00.000000",
+                                name="New York")
         self.assertEqual(state_with_args.id, "789")
         # Add assertions for other attributes
 
@@ -65,6 +70,7 @@ class TestState(unittest.TestCase):
         str_representation = str(self.state)
         self.assertIn(self.state.__class__.__name__, str_representation)
         self.assertIn(self.state.id, str_representation)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,10 @@
+"""
+review module unittest
+"""
 import unittest
 from models.review import Review
 from datetime import datetime
+
 
 class TestReview(unittest.TestCase):
     """
@@ -51,7 +55,10 @@ class TestReview(unittest.TestCase):
         """
         Test the __init__ method with arguments
         """
-        review_with_args = Review(id="789", created_at="2023-01-01T12:00:00.000000", place_id="456", user_id="789", text="Great experience")
+        review_with_args = Review(id="789",
+                                  created_at="2023-01-01T12:00:00.000000",
+                                  place_id="456", user_id="789",
+                                  text="Great experience")
         self.assertEqual(review_with_args.id, "789")
         # Add assertions for other attributes
 
@@ -74,6 +81,7 @@ class TestReview(unittest.TestCase):
         str_representation = str(self.review)
         self.assertIn(self.review.__class__.__name__, str_representation)
         self.assertIn(self.review.id, str_representation)
+
 
 if __name__ == '__main__':
     unittest.main()

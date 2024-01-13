@@ -1,3 +1,6 @@
+"""
+base model test suite module
+"""
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
@@ -62,10 +65,10 @@ class TestBaseModel(unittest.TestCase):
         Test the __init__ method with arguments
         """
         new_base_model = BaseModel(id="123",
-                                  created_at="2023-01-01T12:00:00.000000")
+                                   created_at="2023-01-01T12:00:00.000000")
         self.assertEqual(new_base_model.id, "123")
         self.assertEqual(new_base_model.created_at,
-                        datetime(2023, 1, 1, 12, 0, 0))
+                         datetime(2023, 1, 1, 12, 0, 0))
 
 
 if __name__ == '__main__':
