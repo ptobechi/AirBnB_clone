@@ -2,6 +2,7 @@ import unittest
 from models.amenity import Amenity
 from datetime import datetime
 
+
 class TestAmenity(unittest.TestCase):
     """
     Unit tests for the Amenity class
