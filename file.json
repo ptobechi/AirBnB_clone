@@ -1,0 +1,26 @@
+{
+    "BaseModel.8f380eff-90f2-4d10-972c-847c5ed890ad": {
+        "id": "8f380eff-90f2-4d10-972c-847c5ed890ad",
+        "created_at": "2024-01-16T01:11:18.798991",
+        "updated_at": "2024-01-16T01:11:18.799023",
+        "__class__": "BaseModel"
+    },
+    "BaseModel.4f8e77fb-bf8a-41b5-8d6f-3f5aec8fc9bc": {
+        "id": "4f8e77fb-bf8a-41b5-8d6f-3f5aec8fc9bc",
+        "created_at": "2024-01-16T01:17:46.754970",
+        "updated_at": "2024-01-16T01:17:46.755010",
+        "__class__": "BaseModel"
+    },
+    "User.06f24587-f834-4b7a-9d1d-adc852541133": {
+        "id": "06f24587-f834-4b7a-9d1d-adc852541133",
+        "created_at": "2024-01-16T01:17:53.461069",
+        "updated_at": "2024-01-16T01:17:53.461107",
+        "__class__": "User"
+    },
+    "BaseModel.360d1b71-a525-4abe-80ab-e1c375011cc1": {
+        "id": "360d1b71-a525-4abe-80ab-e1c375011cc1",
+        "created_at": "2024-01-16T01:22:58.198916",
+        "updated_at": "2024-01-16T01:22:58.198950",
+        "__class__": "BaseModel"
+    }
+}

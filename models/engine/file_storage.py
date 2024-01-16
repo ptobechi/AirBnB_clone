@@ -15,59 +15,60 @@ from models.review import Review
 
 class FileStorage:
     """
-    a file storage class
-    Attributes:
-        __file_path: file storage location
-        __objects: file storage format
+    FileStorage class:
+    that serializes instances to a JSON file and
+    deserializes JSON file to instances
+
+    __file_path:
+        string - path to the JSON file (ex: file.json)
+    __objects:
+        dictionary - empty but will store all objects by <class name>.id
     """
     __file_path = "file.json"
     __objects = {}
-    classes = {"BaseModel": BaseModel, "User": User, "State": State,
-               "City": City, "Amenity": Amenity, "Place": Place,
-               "Review": Review}
 
-    def all(self, cls=None):
-        if cls is not None:
-            objects_of_cls = {key: obj for key, obj in self.__objects.items()
-                              if type(obj).__name__ == cls}
-            return objects_of_cls
-        return self.__objects
+    def all(self):
+        return FileStorage.__objects
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        FileStorage.__objects.setdefault(key, obj)
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)"""
-        serialized_objects = {}
-        for key, value in self.__objects.items():
-            serialized_objects[key] = value.to_dict()
-        with open(self.__file_path, 'w', encoding='utf-8') as file:
-            json.dump(serialized_objects, file)
+        to_save = {}
+        for key, obj in FileStorage.__objects.items():
+            key = f"{obj.__class__.__name__}.{obj.id}"
+            to_save.setdefault(key, obj.to_dict())
+
+        with open(self.__file_path, 'w') as f_obj:
+            json.dump(to_save, f_obj, indent=4)
 
     def reload(self):
         """Deserializes the JSON file to __objects."""
-        if exists(FileStorage.__file_path):
-            from models.base_model import BaseModel
-            from models.user import User
-            from models.state import State
-            from models.city import City
-            from models.amenity import Amenity
-            from models.place import Place
-            from models.review import Review
+        try:
+            with open(self.__file_path, 'r') as f_obj:
+                data = json.load(f_obj)
 
-            FileStorage.classes.update({
-                "BaseModel": BaseModel, "User": User, "State": State,
-                "City": City, "Amenity": Amenity, "Place": Place,
-                "Review": Review
-            })
-        if exists(self.__file_path):
-            with open(self.__file_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-                for key, value in data.items():
-                    class_name, obj_id = key.split('.')
-                    if class_name in self.classes:
-                        obj_class = self.classes[class_name]
-                        obj = obj_class(**value)
-                        self.__objects[key] = obj
+            for obj_dict in data.values():
+                key = f"{obj_dict['__class__']}.{obj_dict['id']}"
+                FileStorage.__objects.\
+                    setdefault(key, eval(obj_dict['__class__'])(**obj_dict))
+
+        except FileNotFoundError as e:
+            pass
+
+    def delete(self, obj):
+        """
+        Delete obje t from json storage
+        """
+        name = obj.__class__.__name__
+        id = obj.id
+        key = ".".join([name, id])
+        if key in FileStorage.__objects:
+            del FileStorage.__objects[key]
+            self.save()
+            return True
+
+        return False
