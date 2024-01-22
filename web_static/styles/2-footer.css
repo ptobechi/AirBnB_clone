@@ -1,9 +1,9 @@
 footer {
-    background-color: #00FF00;
     bottom: 0px;
-    display: grid;
+    background-color: #00FF00;
     height: 60px;
-    place-items: center;
+    display: grid;
     position: absolute;
+    place-items: center;
     width: 100%;
 }

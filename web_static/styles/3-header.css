@@ -3,8 +3,8 @@ header {
     border-bottom: 1px solid #CCCCCC;
     display: flex;
     align-items: center;
-    height: 70px;
     position: relative;
+    height: 70px;
     width: 100%;
 }
 
@@ -12,6 +12,6 @@ header .logo {
     background: url(../images/logo.png) no-repeat;
     height: 100%;
     left: 20px;
-    position: absolute;
     width: 20%;
+    position: absolute;
 }
